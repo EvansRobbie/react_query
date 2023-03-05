@@ -1,17 +1,21 @@
 import React from 'react'
-import {useQuery} from 'react-query'
-import axios from 'axios'
 import { InfinitySpin } from 'react-loader-spinner'
+import { useSuperhero } from '../hooks/useSuperhero'
 
-const fetchQuery = () =>{
-  return axios.get('http://localhost:5000/superheres')
-}
+
 const RQSuperheroes = () => {
   // call the hook
   // it  requeires 2 arguments
 // 1.has a unique key to identify the query
 // 2. a function that returns a promise 
-  const {isLoading, data, isError ,error}= useQuery('super-heroes', fetchQuery)
+// success and error callbacks
+const onSuccess = () =>{
+  console.log('Perfom side effect after data fetching')
+}
+const onError = () =>{
+  console.log('Perfom side effect after encountering error')
+}
+  const {isLoading, data, isError ,error}= useSuperhero(onSuccess, onError)
  
   const dataElement = data?.data.map((hero)=>{
     return (
