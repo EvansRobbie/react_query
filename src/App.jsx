@@ -5,6 +5,9 @@ import { ReactQueryDevtools} from 'react-query/devtools'
 import Superheroes from './components/Superheroes'
 import RQSuperheroes from './components/RQSuperheroes'
 import Homepage from './components/Homepage'
+import Details from './components/Details'
+import ParallelQueries from './components/ParallelQueries'
+
 
 
 // create an instance of our clent query
@@ -34,6 +37,8 @@ function App() {
             <Route path='/' element={<Homepage/>}/>
             <Route path='/super-heroes' element={<Superheroes/>}/>
             <Route path='/rq-superheroes' element={<RQSuperheroes/>}/>
+            <Route path='/rq-parallel' element={<ParallelQueries/>}/>
+            <Route path='/rq-superheroes/:id' element={<Details/>}/>
           </Routes>
         </Router>
         </div>

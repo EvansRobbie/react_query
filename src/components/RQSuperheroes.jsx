@@ -1,5 +1,6 @@
 import React from 'react'
 import { InfinitySpin } from 'react-loader-spinner'
+import { Link } from 'react-router-dom'
 import { useSuperhero } from '../hooks/useSuperhero'
 
 
@@ -19,7 +20,9 @@ const onError = () =>{
  
   const dataElement = data?.data.map((hero)=>{
     return (
-      <div key={hero.id} className='text-slate-200 text-center py-4'>{hero.name}</div>
+      <div key={hero.id} className='text-slate-200 text-center py-4'>
+        <Link to ={`/rq-superheroes/${hero.id}`}>{hero.name}</Link>
+      </div>
     )
   })
   return (

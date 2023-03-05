@@ -15,5 +15,19 @@
             "name": "Wonder Woman",
             "alterEgo": "Princess Diana"
         }
+    ],
+    "friends" : [
+        {
+            "id": 1,
+            "name": "Gal Gaddot"
+        },
+        {
+            "id": 2,
+            "name": "Ben Affleck"
+        },
+        {
+            "id": 3,
+            "name": "Tom Wellings"
+        }
     ]
 }
