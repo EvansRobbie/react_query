@@ -5,12 +5,20 @@ import React, { useEffect, useState } from 'react'
 const Superheroes = () => {
   const [isLoading, setIsLoading] =  useState(true)
   const [data, setData] =  useState([])
+  const [error, setError] = useState('')
 
   useEffect(() =>{
     // setIsLoading(true)
     axios.get('http://localhost:5000/superheroes')
-    .then((res) => setData(res.data))
-    setIsLoading(false)
+    .then((res) =>{
+      setData(res.data)
+      setIsLoading(false)
+    })
+    .catch((error)=>{
+      setError(error.message)
+      setIsLoading(false)
+    })
+    
   }, [])
   // if (isLoading){
   //   return <div className='text-lg text-slate-200 flex items-center'>
@@ -32,6 +40,11 @@ const Superheroes = () => {
         color="#fff"
       />
     </div>): dataElement}
+    {error ? <div className='text-center text-red-500'>
+      {error}
+      </div> : null }
+    
+    
     </div>
   )
 }

@@ -4,14 +4,14 @@ import axios from 'axios'
 import { InfinitySpin } from 'react-loader-spinner'
 
 const fetchQuery = () =>{
-  return axios.get('http://localhost:5000/superheroes')
+  return axios.get('http://localhost:5000/superheres')
 }
 const RQSuperheroes = () => {
   // call the hook
   // it  requeires 2 arguments
 // 1.has a unique key to identify the query
 // 2. a function that returns a promise 
-  const {isLoading, data}= useQuery('super-heroes', fetchQuery)
+  const {isLoading, data, isError ,error}= useQuery('super-heroes', fetchQuery)
  
   const dataElement = data?.data.map((hero)=>{
     return (
@@ -27,6 +27,9 @@ const RQSuperheroes = () => {
         color="#fff"
       />
     </div>): dataElement}
+    {isError ? <div className='text-center text-red-500'>
+      {error.message}
+      </div> : null }
     </div>
   )
 }
